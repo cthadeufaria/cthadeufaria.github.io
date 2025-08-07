@@ -1,11 +1,6 @@
 # cthadeufaria.github.io
 **Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | IoT**
 
-📍 Porto, Portugal  
-📧 [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
-🔗 [LinkedIn](https://www.linkedin.com/in/carlos-faria-33b51291/)  
-🔗 [GitHub](https://github.com/cthadeufaria)  
-
 ---
 
 ## Professional Profile
@@ -48,14 +43,6 @@ The system achieves sub-second inference latency and demonstrates strong percept
 
 ---
 
-## Curriculum Vitae
-
-For a complete overview of my technical qualifications, project experience, and academic background:
-
-- [📄 Download CV (PDF)](CV.pdf)
-
----
-
 ## Selected Projects
 
 ### 🎛️ [Raspberry Pi Curtain Video Control](https://github.com/cthadeufaria/raspberry-pi-curtain-video-control)
@@ -94,13 +81,23 @@ For a complete overview of my technical qualifications, project experience, and 
 
 ---
 
+## Curriculum Vitae
+
+For a complete overview of my technical qualifications, project experience, and academic background:
+
+- [📄 Download CV (PDF)](CV.pdf)
+
+---
+
 ## Contact
 
-If you are interested in collaborating on AI, vision, or embedded engineering projects:
+If you're looking for engineering expertise in AI, embedded systems, or applied machine learning, feel free to reach out:
 
+📍 Porto, Portugal  
 📧 [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/carlos-faria-33b51291/)  
-🔗 [GitHub](https://github.com/cthadeufaria)
+🔗 [GitHub](https://github.com/cthadeufaria)  
+
 
 ---
 
