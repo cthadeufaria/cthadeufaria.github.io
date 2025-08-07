@@ -1,11 +1,4 @@
 # cthadeufaria.github.io
-Hardware and Machine Learning Engineering
-
----
-title: Carlos Faria – AI & Embedded Systems Engineer
----
-
-# Carlos Faria
 **Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | IoT**
 
 📍 Porto, Portugal  
