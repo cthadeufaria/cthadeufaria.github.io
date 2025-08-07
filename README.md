@@ -2,78 +2,113 @@
 Hardware and Machine Learning Engineering
 
 ---
-title: Carlos Faria – Freelance Engineer
+title: Carlos Faria – AI & Embedded Systems Engineer
 ---
 
 # Carlos Faria
-**AI/ML & Hardware Engineer**
+**Machine Learning | Embedded Systems | Computer Vision**
 
 📍 Porto, Portugal  
-✉️ [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
+📧 [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/carlos-faria-33b51291/)  
 🔗 [GitHub](https://github.com/cthadeufaria)  
 
 ---
 
-## 👨‍💻 About Me
+## Professional Profile
 
-I am a Master's graduate in Electrical and Computer Engineering from FEUP, specialized in **Machine Learning**, **Computer Vision**, and **Hardware Systems**. My work blends advanced deep learning (including transformers and large language models) with **Rust-powered real-time pipelines** for production-grade applications.
+I am an engineer with a strong foundation in **electrical and computer engineering**, and professional focus on **machine learning**, **computer vision**, and **embedded systems**. My recent academic research applies **transformer-based architectures** to real-time video quality inference, integrated into production-level media pipelines using **Rust**.
 
-My background spans:
-- Real-time inference systems in Rust  
-- Video quality monitoring with transformer architectures  
-- Embedded systems and sensor-driven hardware  
-- Prototyping and industrial communication with Raspberry Pi  
+With a background spanning industrial communication, embedded hardware prototyping, and software engineering, I bring robust interdisciplinary experience to complex technical projects.
 
 ---
 
-## 📄 CV
+## Areas of Expertise
 
-- [📥 Download My CV (PDF)](CV.pdf)
+- **Machine Learning & Computer Vision**  
+  Deep learning (PyTorch, Hugging Face), image/video processing, transformer architectures
 
----
+- **Embedded & Hardware Systems**  
+  Raspberry Pi prototyping, sensor integration, real-time pipelines in Python and Rust
 
-## 🧠 Dissertation
+- **Software Engineering & Tools**  
+  Rust, Python, C/C++, Git, GStreamer, ROS, PostgreSQL
 
-### AI-Driven Media Quality Monitoring System  
-> A Rust-based real-time video inference system integrating PyTorch-trained transformer models for perceptual Quality of Experience (QoE) prediction.
-
-**Technologies:** PyTorch, GStreamer, tch-rs, Rust, ResNet-50, Temporal Attention  
-
-<img src="dissertation_page1.png" alt="Dissertation First Page" width="100%" />
-
-- [📥 Download Full Dissertation (PDF)](AI-driven%20media%20quality%20monitoring%20system.pdf)
+- **Real-Time Inference Systems**  
+  Deployment of AI models in latency-constrained environments using TorchScript & tch-rs
 
 ---
 
-## 🛠️ Technical Skills
+## Dissertation
 
-- **Languages**: Python, Rust, C, C++, HTML/CSS  
-- **AI/ML**: PyTorch, OpenCV, Hugging Face Transformers  
-- **Tools**: GStreamer, ROS, Git, PostgreSQL  
-- **Domains**: Embedded Systems, Computer Vision, LLMs, Streaming QoE  
+### _AI-Driven Media Quality Monitoring System_
 
----
+This dissertation presents a full-stack implementation of a **dual-stage attention neural network** for **no-reference video quality assessment**, integrated into a real-time media processing system using **Rust and GStreamer**.
 
-## 🚀 Selected Projects
+The system achieves sub-second inference latency and demonstrates strong perceptual alignment on the LIVE-NFLX-II dataset. It offers a practical framework for real-time monitoring of streaming media quality.
 
-### 🔧 **Raspberry Pi Cluster for Cyber-Physical Systems**  
-Designed and deployed a wireless multi-node cluster with custom 3D-printed hardware enclosures and provisioning scripts. Used in Industry 4.0 CPS.
+<div align="center">
+  <img src="dissertation_page1.png" alt="Dissertation First Page" width="60%">
+</div>
 
-### 📡 **Embedded Advertising Kiosks**  
-Developed interactive kiosks with real-time sensor input, image processing, and streaming output using Raspberry Pi 5.
-
-### 🎥 **Real-time Video QoE Estimation**  
-Designed a dual-stage attention transformer pipeline for video quality perception. Integrated with Rust and GStreamer for sub-second inference.
+- [📄 Download full dissertation (PDF)](AI-driven%20media%20quality%20monitoring%20system.pdf)
 
 ---
 
-## 🤝 Let’s Work Together
+## Curriculum Vitae
 
-📧 **Email**: [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
-🔗 **LinkedIn**: [Carlos Faria](https://www.linkedin.com/in/carlos-faria-33b51291/)  
-🌐 **GitHub**: [cthadeufaria](https://github.com/cthadeufaria)
+For a complete overview of my technical qualifications, project experience, and academic background:
+
+- [📄 Download CV (PDF)](CV.pdf)
 
 ---
 
-© Carlos Faria 2025
+## Selected Projects
+
+### 🎛️ [Raspberry Pi Curtain Video Control](https://github.com/cthadeufaria/raspberry-pi-curtain-video-control)
+**Embedded Interactive Kiosk System**
+
+- Python-based control of video playback based on motion sensor input  
+- Real-time I/O interaction on Raspberry Pi 5  
+- Designed for advertising kiosks and interactive installations
+
+---
+
+### 📡 [RPI Audio Stream](https://github.com/cthadeufaria/rpi_audio_stream)
+**IoT Audio Broadcasting over Local Network**
+
+- Wi-Fi-based paging and audio triggering system  
+- MP3 playback triggered by client-server messages across Raspberry Pi devices  
+- Hardware-focused audio streaming prototype with scalable architecture
+
+---
+
+### 🎥 [Dual Stage Attention](https://github.com/cthadeufaria/dual-stage-attention)
+**ML-based QoE Prediction with Real-Time Inference**
+
+- Transformer-based architecture for no-reference video quality estimation  
+- Trained on LIVE-NFLX-II; integrated into real-time GStreamer pipeline using Rust  
+- TorchScript model with sub-second inference latency on live video
+
+---
+
+### 🧪 [Computer Vision Defect Detection](https://github.com/cthadeufaria/computer-vision-defect-detection)
+**Image Classification and Segmentation Pipeline**
+
+- Built for industrial defect detection and semantic segmentation tasks  
+- Combines classical preprocessing with PyTorch CNN classifiers  
+- Includes dataset setup, augmentation, training scripts, and evaluation tools
+
+---
+
+## Contact
+
+If you are interested in collaborating on AI, vision, or embedded engineering projects:
+
+📧 [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/carlos-faria-33b51291/)  
+🔗 [GitHub](https://github.com/cthadeufaria)
+
+---
+
+© 2025 Carlos Faria. All rights reserved.
