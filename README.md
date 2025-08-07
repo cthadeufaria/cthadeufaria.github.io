@@ -6,7 +6,7 @@ title: Carlos Faria – AI & Embedded Systems Engineer
 ---
 
 # Carlos Faria
-**Machine Learning | Embedded Systems | Computer Vision**
+**Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | IoT**
 
 📍 Porto, Portugal  
 📧 [crls.thadeu@gmail.com](mailto:crls.thadeu@gmail.com)  
