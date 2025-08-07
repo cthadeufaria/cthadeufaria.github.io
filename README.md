@@ -102,3 +102,4 @@ If you're looking for engineering expertise in AI, embedded systems, or applied 
 ---
 
 © 2025 Carlos Faria. All rights reserved.
+🔗 [html version](index.html)  
