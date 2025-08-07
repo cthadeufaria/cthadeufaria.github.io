@@ -1,4 +1,4 @@
-# cthadeufaria.github.io
+# Carlos Thadeu Faria
 **Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | IoT**
 
 ---
