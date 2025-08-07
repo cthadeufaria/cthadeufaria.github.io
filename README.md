@@ -32,19 +32,19 @@ With a background spanning industrial communication, embedded hardware prototypi
 
 ---
 
-## Dissertation
+## Published Paper
 
 ### _AI-Driven Media Quality Monitoring System_
 
-This dissertation presents a full-stack implementation of a **dual-stage attention neural network** for **no-reference video quality assessment**, integrated into a real-time media processing system using **Rust and GStreamer**.
+This work presents a full-stack implementation of a **dual-stage attention neural network** for **no-reference video quality assessment**, integrated into a real-time media processing system using **Rust and GStreamer**.
 
 The system achieves sub-second inference latency and demonstrates strong perceptual alignment on the LIVE-NFLX-II dataset. It offers a practical framework for real-time monitoring of streaming media quality.
 
 <div align="center">
-  <img src="dissertation_page1.png" alt="Dissertation First Page" width="60%">
+  <img src="dissertation_image.png" alt="Dissertation First Page" width="60%">
 </div>
 
-- [📄 Download full dissertation (PDF)](AI-driven%20media%20quality%20monitoring%20system.pdf)
+- [📄 Download full dissertation (PDF)](dissertation.pdf)
 
 ---
 
