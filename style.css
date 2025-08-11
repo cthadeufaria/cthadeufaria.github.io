@@ -1,0 +1,95 @@
+/* style.css - Modern, professional, blue pastel theme */
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f0ff 0%, #cbe2ff 100%);
+    color: #222e3a;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #b3d1ff;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(50, 100, 200, 0.08);
+}
+
+h1, h2, h3 {
+    color: #2a4d7a;
+    margin-bottom: 0.5em;
+}
+
+nav {
+    margin: 1rem 0;
+}
+
+nav a {
+    color: #2a4d7a;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #5b9aff;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #f7fbff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(50, 100, 200, 0.07);
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+footer {
+    background: #b3d1ff;
+    color: #2a4d7a;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    font-size: 0.95em;
+    box-shadow: 0 -2px 8px rgba(50, 100, 200, 0.08);
+}
+
+.button, button, input[type="submit"] {
+    background: #5b9aff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6em 1.4em;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(50, 100, 200, 0.10);
+    transition: background 0.2s;
+}
+
+.button:hover, button:hover, input[type="submit"]:hover {
+    background: #2a4d7a;
+}
+
+img, .profile-pic {
+    border-radius: 12px;
+    max-width: 100%;
+    box-shadow: 0 2px 12px rgba(50, 100, 200, 0.10);
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+    h1 {
+        font-size: 2em;
+    }
+}
