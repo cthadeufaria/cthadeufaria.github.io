@@ -4,87 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carlos Faria - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-
-    .button-link {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #0066cc;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
 </head>
 <body>
-  <h1>Carlos Thadeu Faria</h1>
-  <p class="tagline"><strong>Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | IoT</strong></p>
+  <header>
+    <h1>AI-Powered Engineering for Innovation</h1>
+    <p class="tagline"><strong>Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | Internet of Things | Natural Language Processing | Robotics | Data Analytics</strong></p>
+  </header>
 
-  <h2>Professional Profile</h2>
-  <p>I am an engineer with a strong foundation in <strong>electrical and computer engineering</strong>, and professional focus on <strong>machine learning</strong>, <strong>computer vision</strong>, and <strong>embedded systems</strong>. My recent academic research applies <strong>transformer-based architectures</strong> to real-time video quality inference, integrated into production-level media pipelines using <strong>Rust</strong>.</p>
-  <p>With a background spanning industrial communication, embedded hardware prototyping, and software engineering, I bring robust interdisciplinary experience to complex technical projects.</p>
+  <section>
+    <h2>Professional Profile</h2>
+    <p>
+      At the forefront of innovation, we specialize in delivering intelligent solutions that unite <strong>electrical and computer engineering</strong> with cutting-edge <strong>machine learning</strong>, <strong>computer vision</strong>, and <strong>embedded systems</strong>. Our expertise transforms complex technical challenges into robust, scalable solutions tailored for real-world impact.
+    </p>
+    <p>
+      With proven experience in <strong>transformer-based architectures</strong> for real-time video quality inference, our team integrates advanced AI directly into <strong>production-grade media pipelines</strong> using the performance and safety of <strong>Rust</strong>.
+    </p>
+    <p>
+      From <strong>industrial communication systems</strong> to <strong>embedded hardware prototyping</strong> and full-stack software engineering, we provide end-to-end capabilities that bridge disciplines — ensuring every project benefits from precision engineering, cross-domain insight, and uncompromising quality.
+    </p>
+  </section>
 
-  <h2>Areas of Expertise</h2>
-  <ul>
-    <li><strong>Machine Learning & Computer Vision</strong>: PyTorch, Hugging Face, transformer models, video/image processing</li>
-    <li><strong>Embedded & Hardware Systems</strong>: Raspberry Pi, sensor integration, Rust/Python pipelines</li>
-    <li><strong>Software Engineering & Tools</strong>: Rust, Python, C/C++, Git, GStreamer, ROS, PostgreSQL</li>
-    <li><strong>Real-Time Inference Systems</strong>: TorchScript, low-latency inference, production ML</li>
-  </ul>
+  <section>
+    <h2>Areas of Expertise</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3><i class="fas fa-brain icon"></i> Machine Learning & Computer Vision</h3>
+        <p>PyTorch, Hugging Face, transformer models, video/image processing</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3><i class="fas fa-microchip icon"></i> Embedded & Hardware Systems</h3>
+        <p>Raspberry Pi, sensor integration, Rust/Python pipelines</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3><i class="fas fa-code icon"></i> Software Engineering & Tools</h3>
+        <p>Rust, Python, C/C++, Git, GStreamer, ROS, PostgreSQL</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3><i class="fas fa-bolt icon"></i> Real-Time Inference Systems</h3>
+        <p>TorchScript, low-latency inference, production ML</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>Published Paper</h2>
-  <h3>AI-Driven Media Quality Monitoring System</h3>
-  <p>This work presents a full-stack implementation of a <strong>dual-stage attention neural network</strong> for <strong>no-reference video quality assessment</strong>, integrated into a real-time media processing system using <strong>Rust and GStreamer</strong>.</p>
-  <p>The system achieves sub-second inference latency and demonstrates strong perceptual alignment on the LIVE-NFLX-II dataset.</p>
-  <img src="dissertation_image.png" alt="Dissertation First Page" />
-  <p><a href="dissertation.pdf">📄 Download full dissertation (PDF)</a></p>
+  <section>
+    <h2>Published Paper</h2>
+    <h3>AI-Driven Media Quality Monitoring System</h3>
+    <p>This work presents a full-stack implementation of a <strong>dual-stage attention neural network</strong> for <strong>no-reference video quality assessment</strong>, integrated into a real-time media processing system using <strong>Rust and GStreamer</strong>.</p>
+    <p>The system achieves sub-second inference latency and demonstrates strong perceptual alignment on the LIVE-NFLX-II dataset.</p>
+    <a href="dissertation.pdf" class="paper-download">
+      <i class="fas fa-file-pdf"></i> Download article (PDF)
+    </a>
+  </section>
 
-  <h2>Selected Projects</h2>
+  <section>
+    <h2>Selected Projects</h2>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/raspberry-pi-curtain-video-control">🎛️ Raspberry Pi Curtain Video Control</a></h3>
-    <p><strong>Embedded Interactive Kiosk System</strong><br />
-    Python-based video control triggered by motion sensors. Real-time interaction via Raspberry Pi 5, designed for public-facing digital kiosks.</p>
-  </div>
+    <div class="project">
+      <h3><i class="fas fa-video icon"></i> <a href="https://github.com/cthadeufaria/dual-stage-attention">Dual Stage Attention</a></h3>
+      <p><strong>ML-based QoE Prediction with Real-Time Inference</strong><br />
+      Transformer-based architecture for video quality estimation, integrated with a real-time GStreamer+Rust pipeline. TorchScript model supports sub-second inference.</p>
+    </div>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/rpi_audio_stream">📡 RPI Audio Stream</a></h3>
-    <p><strong>IoT Audio Broadcasting</strong><br />
-    Wi-Fi-triggered MP3 playback across distributed Raspberry Pi nodes. Local network audio communication prototype for paging systems.</p>
-  </div>
+    <div class="project">
+      <h3><i class="fas fa-microchip icon"></i> <a href="https://github.com/cthadeufaria/raspberry-pi-curtain-video-control">Raspberry Pi Curtain Video Control</a></h3>
+      <p><strong>Embedded Interactive Kiosk System</strong><br />
+      Python-based video control triggered by motion sensors. Real-time interaction via Raspberry Pi 5, designed for public-facing digital kiosks.</p>
+    </div>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/dual-stage-attention">🎥 Dual Stage Attention</a></h3>
-    <p><strong>ML-based QoE Prediction with Real-Time Inference</strong><br />
-    Transformer-based architecture for video quality estimation, integrated with a real-time GStreamer+Rust pipeline. TorchScript model supports sub-second inference.</p>
-  </div>
+    <div class="project">
+      <h3><i class="fas fa-wifi icon"></i> <a href="https://github.com/cthadeufaria/rpi_audio_stream">RPI Audio Stream</a></h3>
+      <p><strong>IoT Audio Broadcasting</strong><br />
+      Wi-Fi-triggered MP3 playback across distributed Raspberry Pi nodes. Local network audio communication prototype for paging systems.</p>
+    </div>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/computer-vision-defect-detection">🧪 Computer Vision Defect Detection</a></h3>
-    <p><strong>Industrial AI for Defect Detection</strong><br />
-    PyTorch-based image classification and segmentation system for visual inspection. Supports dataset preparation, augmentation, and inference evaluation.</p>
-  </div>
+    <div class="project">
+      <h3><i class="fas fa-eye icon"></i> <a href="https://github.com/cthadeufaria/computer-vision-defect-detection">Computer Vision Defect Detection</a></h3>
+      <p><strong>Industrial AI for Defect Detection</strong><br />
+      PyTorch-based image classification and segmentation system for visual inspection. Supports dataset preparation, augmentation, and inference evaluation.</p>
+    </div>
+  </section>
 
-  <h2>Curriculum Vitae</h2>
-    <p>For a complete overview of my technical qualifications, project experience, and academic background:</p>
-  <p><a href="CV.pdf">📄 Download CV (PDF)</a></p>
-
-  <h2>Contact</h2>
-  <p>If you're looking for engineering expertise in AI, embedded systems, or applied machine learning, feel free to reach out:</p>
-  <div class="contact">
-    📍 Porto, Portugal<br />
-    📧 <a href="mailto:crls.thadeu@gmail.com">crls.thadeu@gmail.com</a><br />
-    🔗 <a href="https://www.linkedin.com/in/carlos-faria-33b51291/">LinkedIn</a><br />
-    🔗 <a href="https://github.com/cthadeufaria">GitHub</a><br />
-  </div>
+  <section>
+    <h2>Contact</h2>
+    <p>If you're looking for engineering expertise in AI, embedded systems, or applied machine learning, feel free to reach out:</p>
+    <div class="contact">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt icon"></i>
+          <span>Porto, Portugal</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope icon"></i>
+          <a href="mailto:crls.thadeu@gmail.com">crls.thadeu@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin-in icon"></i>
+          <a href="https://www.linkedin.com/in/carlos-faria-33b51291/">LinkedIn</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github icon"></i>
+          <a href="https://github.com/cthadeufaria">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 Carlos Faria. All rights reserved.<br />
-    <a class="button-link" href="README.md">View Markdown Version</a>
-
+    <p>&copy; 2025 Carlos Faria. All rights reserved.</p>
+    <a class="button-link" href="README.md">
+      <i class="fab fa-markdown"></i> View Markdown Version
+    </a>
   </footer>
 </body>
 </html>
