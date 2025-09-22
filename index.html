@@ -1,142 +1,1444 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carlos Faria – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      line-height: 1.7;
-      background: #f9f9f9;
-      color: #111;
-    }
-    h1, h2, h3 {
-      color: #222;
-    }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 0.25em;
-    }
-    h2 {
-      font-size: 1.75rem;
-      margin-top: 2rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.25rem;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .tagline {
-      font-size: 1.1rem;
-      color: #444;
-    }
-    .contact {
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
-    .project {
-      margin-bottom: 1.5rem;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ccc;
-      margin: 1rem 0;
-    }
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-    }
-    .button-link {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #0066cc;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brabo's League - Temporada 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: 
+                /* Dark overlay for text readability */
+                linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 0, 0.85) 100%),
+                /* Subtle yellow texture overlay */
+                radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 193, 7, 0.06) 0%, transparent 50%),
+                /* Noise texture for premium feel */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 215, 0, 0.02) 2px,
+                    rgba(255, 215, 0, 0.02) 4px
+                ),
+                /* Main pitch background */
+                url('pitch.jpg');
+            background-size: 
+                cover,
+                400px 400px,
+                600px 600px,
+                20px 20px,
+                cover;
+            background-position: 
+                center,
+                top left,
+                bottom right,
+                0 0,
+                center;
+            background-repeat: 
+                no-repeat,
+                no-repeat,
+                no-repeat,
+                repeat,
+                no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            scroll-padding-top: 150px;
+            position: relative;
+        }
+
+        /* Additional texture overlay using pseudo-element */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255, 215, 0, 0.008) 1px,
+                    rgba(255, 215, 0, 0.008) 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255, 215, 0, 0.008) 1px,
+                    rgba(255, 215, 0, 0.008) 2px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Ensure content appears above the texture */
+        .header,
+        .container,
+        .footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 18, 0, 0.95) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, rgba(15, 15, 0, 0.9) 0%, rgba(25, 20, 0, 0.9) 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px) saturate(180%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .result-date {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-date .date {
+            font-size: 0.9rem;
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .result-date .time {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 0.2rem;
+        }
+
+        .result-date .round {
+            font-size: 0.8rem;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .result-match {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .team-result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .team-result .team-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #00d4ff, #ff0096);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-result .team-name {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-result .team-score {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ccc;
+        }
+
+        .team-result .team-score.winner {
+            color: #ffd700;
+        }
+
+        .vs-divider {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin: 0 1rem;
+        }
+
+        .result-details {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .result-details .penalty {
+            color: #ff0096;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .result-details .stadium {
+            opacity: 0.7;
+        }
+
+        /* Video Player */
+        .video-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .video-player {
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            position: relative;
+        }
+
+        .video-placeholder i {
+            font-size: 4rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .live-indicator {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #ff0096;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .video-controls {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background: #00d4ff;
+            border-radius: 2px;
+            width: 35%;
+        }
+
+        .time-display {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .stream-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .stream-info h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .stream-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .social-btn:hover {
+            background: rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #00d4ff;
+            white-space: nowrap;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%);
+            margin: 3rem 0;
+            border-radius: 20px;
+            backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffb300);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 215, 0, 0.1);
+            scroll-margin-top: 120px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            color: #ffd700;
+        }
+
+        /* Scoreboard */
+        .scoreboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .match-card {
+            background: linear-gradient(135deg, rgba(15, 15, 0, 0.9) 0%, rgba(25, 20, 0, 0.9) 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px) saturate(180%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .match-status {
+            background: #ffa500;
+            color: black;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .team {
+            text-align: center;
+            flex: 1;
+        }
+
+        .team-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #00d4ff, #ff0096);
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .score {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+
+        .vs {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin: 0 1rem;
+        }
+
+        /* Results Table */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .results-table th {
+            background: rgba(0, 212, 255, 0.1);
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .results-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Top Scorers */
+        .scorers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: scale(1.05);
+        }
+
+        .player-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff0096, #00d4ff);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .player-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-team {
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .goals-count {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+
+        /* Playoffs Bracket */
+        .playoffs-container {
+            overflow-x: auto;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bracket {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 900px;
+            gap: 3rem;
+            margin: 0 auto;
+        }
+
+        .bracket-round {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        .bracket-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .bracket-match {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 15px;
+            padding: 1rem;
+            width: 200px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .bracket-match:hover {
+            transform: translateY(-2px);
+        }
+
+        .bracket-match.winner {
+            border-color: #ff0096;
+            box-shadow: 0 0 20px rgba(255, 0, 150, 0.3);
+        }
+
+        .bracket-team {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bracket-team:last-child {
+            border-bottom: none;
+        }
+
+        .bracket-team.winner {
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .bracket-team-name {
+            font-size: 0.9rem;
+        }
+
+        .bracket-score {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .bracket-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00d4ff;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        .bracket-spacer {
+            height: 6rem;
+        }
+
+        /* Fixtures */
+        .fixtures-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .fixture-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .fixture-date {
+            font-weight: 600;
+            color: #00d4ff;
+            min-width: 120px;
+        }
+
+        .fixture-match {
+            flex: 1;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .fixture-venue {
+            opacity: 0.7;
+            min-width: 120px;
+            text-align: right;
+        }
+
+        /* Store Section */
+        .store-section {
+            background: linear-gradient(135deg, rgba(255, 0, 150, 0.8) 0%, rgba(0, 212, 255, 0.8) 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .store-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .store-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(10, 10, 10, 0.8);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px) saturate(180%);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Medium screens */
+        @media (max-width: 1024px) {
+            .header-content {
+                padding: 0 1.5rem;
+            }
+
+            .nav-menu {
+                gap: 1.2rem;
+            }
+
+            .nav-menu a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.85rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .bracket {
+                gap: 2.5rem;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .header-content {
+                padding: 0 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo i {
+                font-size: 1.6rem;
+            }
+
+            body {
+                background-attachment: scroll; /* Better performance on mobile */
+            }
+
+            body::before {
+                display: none; /* Reduce complexity on mobile */
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scoreboard-grid,
+            .scorers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+
+            .bracket {
+                min-width: 700px;
+                gap: 2rem;
+            }
+
+            .bracket-round {
+                min-height: 400px;
+            }
+
+            .bracket-match {
+                width: 160px;
+            }
+
+            .bracket-team-name {
+                font-size: 0.8rem;
+            }
+
+            .bracket-spacer {
+                height: 3rem;
+            }
+
+            .fixture-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .fixture-date,
+            .fixture-venue {
+                min-width: auto;
+                text-align: center;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
 </head>
 <body>
-  <h1>Carlos Thadeu Faria</h1>
-  <p class="tagline"><strong>Machine Learning | Artificial Intelligence | Embedded Systems | Hardware Engineering | Computer Vision | IoT</strong></p>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-futbol"></i>
+                Brabo's League
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#results">Resultados</a></li>
+                    <li><a href="#scoreboard">Placar</a></li>
+                    <li><a href="#live-stream">Ao Vivo</a></li>
+                    <li><a href="#playoffs">Playoffs</a></li>
+                    <li><a href="#scorers">Artilheiros</a></li>
+                    <li><a href="#fixtures">Fixtures</a></li>
+                    <li><a href="#store">Loja</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <h2>Professional Profile</h2>
-  <p>I am an engineer with a strong foundation in <strong>electrical and computer engineering</strong>, and professional focus on <strong>machine learning</strong>, <strong>computer vision</strong>, and <strong>embedded systems</strong>. My recent academic research applies <strong>transformer-based architectures</strong> to real-time video quality inference, integrated into production-level media pipelines using <strong>Rust</strong>.</p>
-  <p>With a background spanning industrial communication, embedded hardware prototyping, and software engineering, I bring robust interdisciplinary experience to complex technical projects.</p>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Brabo's League 2025</h1>
+            <p>Acompanhe os melhores momentos da temporada mais emocionante do futebol brasileiro</p>
+        </section>
 
-  <h2>Areas of Expertise</h2>
-  <ul>
-    <li><strong>Machine Learning & Computer Vision</strong>: PyTorch, Hugging Face, transformer models, video/image processing</li>
-    <li><strong>Embedded & Hardware Systems</strong>: Raspberry Pi, sensor integration, Rust/Python pipelines</li>
-    <li><strong>Software Engineering & Tools</strong>: Rust, Python, C/C++, Git, GStreamer, ROS, PostgreSQL</li>
-    <li><strong>Real-Time Inference Systems</strong>: TorchScript, low-latency inference, production ML</li>
-  </ul>
+        <!-- Last Results -->
+        <section id="results" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-history"></i>
+                Últimos Resultados
+            </h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-date">
+                        <div class="date">18/05/2025</div>
+                        <div class="time">20:30</div>
+                        <div class="round">Final</div>
+                    </div>
+                    <div class="result-match">
+                        <div class="team-result">
+                            <div class="team-logo">TH</div>
+                            <div class="team-name">Thunder Hawks</div>
+                            <div class="team-score winner">5</div>
+                        </div>
+                        <div class="vs-divider">vs</div>
+                        <div class="team-result">
+                            <div class="team-logo">DV</div>
+                            <div class="team-name">Dragon Vipers</div>
+                            <div class="team-score">5</div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="penalty">(2-1) Pênaltis</div>
+                        <div class="stadium">Estádio Nacional</div>
+                    </div>
+                </div>
 
-  <h2>Published Paper</h2>
-  <h3>AI-Driven Media Quality Monitoring System</h3>
-  <p>This work presents a full-stack implementation of a <strong>dual-stage attention neural network</strong> for <strong>no-reference video quality assessment</strong>, integrated into a real-time media processing system using <strong>Rust and GStreamer</strong>.</p>
-  <p>The system achieves sub-second inference latency and demonstrates strong perceptual alignment on the LIVE-NFLX-II dataset.</p>
-  <img src="dissertation_image.png" alt="Dissertation First Page" />
-  <p><a href="dissertation.pdf">📄 Download full dissertation (PDF)</a></p>
+                <div class="result-card">
+                    <div class="result-date">
+                        <div class="date">12/05/2025</div>
+                        <div class="time">20:00</div>
+                        <div class="round">Semifinal</div>
+                    </div>
+                    <div class="result-match">
+                        <div class="team-result">
+                            <div class="team-logo">SW</div>
+                            <div class="team-name">Storm Wolves</div>
+                            <div class="team-score">5</div>
+                        </div>
+                        <div class="vs-divider">vs</div>
+                        <div class="team-result">
+                            <div class="team-logo">DV</div>
+                            <div class="team-name">Dragon Vipers</div>
+                            <div class="team-score winner">6</div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="stadium">Arena Championship</div>
+                    </div>
+                </div>
 
-  <h2>Selected Projects</h2>
+                <div class="result-card">
+                    <div class="result-date">
+                        <div class="date">12/05/2025</div>
+                        <div class="time">19:00</div>
+                        <div class="round">Semifinal</div>
+                    </div>
+                    <div class="result-match">
+                        <div class="team-result">
+                            <div class="team-logo">TH</div>
+                            <div class="team-name">Thunder Hawks</div>
+                            <div class="team-score winner">6</div>
+                        </div>
+                        <div class="vs-divider">vs</div>
+                        <div class="team-result">
+                            <div class="team-logo">VC</div>
+                            <div class="team-name">Viper Crusaders</div>
+                            <div class="team-score">2</div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="stadium">Estádio da Luz</div>
+                    </div>
+                </div>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/raspberry-pi-curtain-video-control">🎛️ Raspberry Pi Curtain Video Control</a></h3>
-    <p><strong>Embedded Interactive Kiosk System</strong><br />
-    Python-based video control triggered by motion sensors. Real-time interaction via Raspberry Pi 5, designed for public-facing digital kiosks.</p>
-  </div>
+                <div class="result-card">
+                    <div class="result-date">
+                        <div class="date">09/05/2025</div>
+                        <div class="time">20:00</div>
+                        <div class="round">Quartas</div>
+                    </div>
+                    <div class="result-match">
+                        <div class="team-result">
+                            <div class="team-logo">IG</div>
+                            <div class="team-name">Iron Guardians</div>
+                            <div class="team-score">4</div>
+                        </div>
+                        <div class="vs-divider">vs</div>
+                        <div class="team-result">
+                            <div class="team-logo">DV</div>
+                            <div class="team-name">Dragon Vipers</div>
+                            <div class="team-score winner">8</div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="stadium">Arena Championship</div>
+                    </div>
+                </div>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/rpi_audio_stream">📡 RPI Audio Stream</a></h3>
-    <p><strong>IoT Audio Broadcasting</strong><br />
-    Wi-Fi-triggered MP3 playback across distributed Raspberry Pi nodes. Local network audio communication prototype for paging systems.</p>
-  </div>
+                <div class="result-card">
+                    <div class="result-date">
+                        <div class="date">09/05/2025</div>
+                        <div class="time">19:00</div>
+                        <div class="round">Quartas</div>
+                    </div>
+                    <div class="result-match">
+                        <div class="team-result">
+                            <div class="team-logo">SF</div>
+                            <div class="team-name">Shadow Foxes</div>
+                            <div class="team-score">1</div>
+                        </div>
+                        <div class="vs-divider">vs</div>
+                        <div class="team-result">
+                            <div class="team-logo">SW</div>
+                            <div class="team-name">Storm Wolves</div>
+                            <div class="team-score winner">4</div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="stadium">Estádio Nacional</div>
+                    </div>
+                </div>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/dual-stage-attention">🎥 Dual Stage Attention</a></h3>
-    <p><strong>ML-based QoE Prediction with Real-Time Inference</strong><br />
-    Transformer-based architecture for video quality estimation, integrated with a real-time GStreamer+Rust pipeline. TorchScript model supports sub-second inference.</p>
-  </div>
+                <div class="result-card">
+                    <div class="result-date">
+                        <div class="date">05/05/2025</div>
+                        <div class="time">21:00</div>
+                        <div class="round">Rodada 9</div>
+                    </div>
+                    <div class="result-match">
+                        <div class="team-result">
+                            <div class="team-logo">IG</div>
+                            <div class="team-name">Iron Guardians</div>
+                            <div class="team-score">4</div>
+                        </div>
+                        <div class="vs-divider">vs</div>
+                        <div class="team-result">
+                            <div class="team-logo">SF</div>
+                            <div class="team-name">Shadow Foxes</div>
+                            <div class="team-score winner">5</div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="stadium">Arena Championship</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="project">
-    <h3><a href="https://github.com/cthadeufaria/computer-vision-defect-detection">🧪 Computer Vision Defect Detection</a></h3>
-    <p><strong>Industrial AI for Defect Detection</strong><br />
-    PyTorch-based image classification and segmentation system for visual inspection. Supports dataset preparation, augmentation, and inference evaluation.</p>
-  </div>
+        <!-- Live Scoreboard -->
+        <section id="scoreboard" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-tv"></i>
+                Placar Ao Vivo
+            </h2>
+            <div class="scoreboard-grid">
+                <div class="match-card">
+                    <div class="match-status">AO VIVO - 67'</div>
+                    <div class="teams">
+                        <div class="team">
+                            <div class="team-logo">TH</div>
+                            <div class="team-name">Thunder Hawks</div>
+                        </div>
+                        <div class="score">2</div>
+                        <div class="vs">vs</div>
+                        <div class="score">1</div>
+                        <div class="team">
+                            <div class="team-logo">IG</div>
+                            <div class="team-name">Iron Guardians</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-status">AO VIVO - 23'</div>
+                    <div class="teams">
+                        <div class="team">
+                            <div class="team-logo">SF</div>
+                            <div class="team-name">Shadow Foxes</div>
+                        </div>
+                        <div class="score">0</div>
+                        <div class="vs">vs</div>
+                        <div class="score">1</div>
+                        <div class="team">
+                            <div class="team-logo">VC</div>
+                            <div class="team-name">Viper Crusaders</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="match-card">
+                    <div class="match-status">INTERVALO</div>
+                    <div class="teams">
+                        <div class="team">
+                            <div class="team-logo">BR</div>
+                            <div class="team-name">Blaze Runners</div>
+                        </div>
+                        <div class="score">3</div>
+                        <div class="vs">vs</div>
+                        <div class="score">2</div>
+                        <div class="team">
+                            <div class="team-logo">SW</div>
+                            <div class="team-name">Storm Wolves</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <h2>Curriculum Vitae</h2>
-    <p>For a complete overview of my technical qualifications, project experience, and academic background:</p>
-  <p><a href="CV.pdf">📄 Download CV (PDF)</a></p>
+        <!-- Live Stream -->
+        <section id="live-stream" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-video"></i>
+                Transmissão Ao Vivo
+            </h2>
+            <div class="video-container">
+                <div class="video-player">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <h3>Brabo's League Brasil</h3>
+                        <p>Transmissão ao vivo das partidas</p>
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>
+                            AO VIVO
+                        </div>
+                    </div>
+                    <div class="video-controls">
+                        <button class="control-btn"><i class="fas fa-play"></i></button>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time-display">02:15:30</div>
+                        <button class="control-btn"><i class="fas fa-volume-up"></i></button>
+                        <button class="control-btn"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+                <div class="stream-info">
+                    <h4>Next Stream</h4>
+                    <p><strong>Saturday, Sep 25 - 19:00</strong></p>
+                    <p>Thunder Hawks vs Elite Warriors</p>
+                    <p>National Stadium</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="fab fa-twitch"></i> Twitch</a>
+                        <a href="#" class="social-btn"><i class="fab fa-youtube"></i> YouTube</a>
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <h2>Contact</h2>
-  <p>If you're looking for engineering expertise in AI, embedded systems, or applied machine learning, feel free to reach out:</p>
-  <div class="contact">
-    📍 Porto, Portugal<br />
-    📧 <a href="mailto:crls.thadeu@gmail.com">crls.thadeu@gmail.com</a><br />
-    🔗 <a href="https://www.linkedin.com/in/carlos-faria-33b51291/">LinkedIn</a><br />
-    🔗 <a href="https://github.com/cthadeufaria">GitHub</a><br />
-  </div>
+        <!-- Top Scorers -->
+        <section id="scorers" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                Top Scorers
+            </h2>
+            <div class="scorers-grid">
+                <div class="player-card">
+                    <div class="player-avatar">MR</div>
+                    <div class="player-name">Marcus "Lightning" Rodriguez</div>
+                    <div class="player-team">Thunder Hawks</div>
+                    <div class="goals-count">19</div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">DT</div>
+                    <div class="player-name">Diego "The Sniper" Thompson</div>
+                    <div class="player-team">Iron Guardians</div>
+                    <div class="goals-count">15</div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">AW</div>
+                    <div class="player-name">Alex "Tornado" Williams</div>
+                    <div class="player-team">Shadow Foxes</div>
+                    <div class="goals-count">15</div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">CJ</div>
+                    <div class="player-name">Carlos "The Phantom" Johnson</div>
+                    <div class="player-team">Thunder Hawks</div>
+                    <div class="goals-count">12</div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">RM</div>
+                    <div class="player-name">Ryan "Blaze" Martinez</div>
+                    <div class="player-team">Blaze Runners</div>
+                    <div class="goals-count">11</div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">JS</div>
+                    <div class="player-name">Jake "Storm" Silva</div>
+                    <div class="player-team">Storm Wolves</div>
+                    <div class="goals-count">10</div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    &copy; 2025 Carlos Faria. All rights reserved.<br />
-    <a class="button-link" href="README.md">View Markdown Version</a>
+        <!-- Playoffs Bracket -->
+        <section id="playoffs" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-trophy"></i>
+                Playoffs - Chave Eliminatória
+            </h2>
+            <div class="playoffs-container">
+                <div class="bracket">
+                    <!-- Quarterfinals -->
+                    <div class="bracket-round">
+                        <div class="bracket-title">Quartas-de-final</div>
+                        <div class="bracket-match">
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Viper Crusaders</span>
+                                <span class="bracket-score">5</span>
+                            </div>
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Blaze Runners</span>
+                                <span class="bracket-score">4</span>
+                            </div>
+                        </div>
+                        <div class="bracket-match">
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Shadow Foxes</span>
+                                <span class="bracket-score">1</span>
+                            </div>
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Storm Wolves</span>
+                                <span class="bracket-score">4</span>
+                            </div>
+                        </div>
+                        <div class="bracket-match">
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Iron Guardians</span>
+                                <span class="bracket-score">4</span>
+                            </div>
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Dragon Vipers</span>
+                                <span class="bracket-score">8</span>
+                            </div>
+                        </div>
+                        <div class="bracket-match">
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Thunder Hawks</span>
+                                <span class="bracket-score">-</span>
+                            </div>
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Bye</span>
+                                <span class="bracket-score">-</span>
+                            </div>
+                        </div>
+                    </div>
 
-  </footer>
+                    <!-- Arrow -->
+                    <div class="bracket-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+
+                    <!-- Semifinals -->
+                    <div class="bracket-round">
+                        <div class="bracket-title">Semifinais</div>
+                        <div class="bracket-spacer"></div>
+                        <div class="bracket-match">
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Thunder Hawks</span>
+                                <span class="bracket-score">6</span>
+                            </div>
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Viper Crusaders</span>
+                                <span class="bracket-score">2</span>
+                            </div>
+                        </div>
+                        <div class="bracket-match">
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Storm Wolves</span>
+                                <span class="bracket-score">5</span>
+                            </div>
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Dragon Vipers</span>
+                                <span class="bracket-score">6</span>
+                            </div>
+                        </div>
+                        <div class="bracket-spacer"></div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="bracket-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+
+                    <!-- Final -->
+                    <div class="bracket-round">
+                        <div class="bracket-title">Final</div>
+                        <div class="bracket-spacer"></div>
+                        <div class="bracket-spacer"></div>
+                        <div class="bracket-match winner">
+                            <div class="bracket-team winner">
+                                <span class="bracket-team-name">Thunder Hawks</span>
+                                <span class="bracket-score">5 (2)</span>
+                            </div>
+                            <div class="bracket-team">
+                                <span class="bracket-team-name">Dragon Vipers</span>
+                                <span class="bracket-score">5 (1)</span>
+                            </div>
+                        </div>
+                        <div class="bracket-spacer"></div>
+                        <div class="bracket-spacer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Matches -->
+        <section id="fixtures" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                Next Matches
+            </h2>
+            <div class="fixtures-list">
+                <div class="fixture-item">
+                    <div class="fixture-date">
+                        <div>Sat, Sep 25</div>
+                        <div>19:00</div>
+                    </div>
+                    <div class="fixture-match">Thunder Hawks vs Elite Warriors</div>
+                    <div class="fixture-venue">National Stadium</div>
+                </div>
+                <div class="fixture-item">
+                    <div class="fixture-date">
+                        <div>Sun, Sep 26</div>
+                        <div>16:00</div>
+                    </div>
+                    <div class="fixture-match">Iron Guardians vs Galaxy Knights</div>
+                    <div class="fixture-venue">Championship Arena</div>
+                </div>
+                <div class="fixture-item">
+                    <div class="fixture-date">
+                        <div>Sun, Sep 26</div>
+                        <div>18:00</div>
+                    </div>
+                    <div class="fixture-match">Storm Wolves vs Dragon Vipers</div>
+                    <div class="fixture-venue">Light Stadium</div>
+                </div>
+                <div class="fixture-item">
+                    <div class="fixture-date">
+                        <div>Mon, Sep 27</div>
+                        <div>20:00</div>
+                    </div>
+                    <div class="fixture-match">Viper Crusaders vs Blaze Runners</div>
+                    <div class="fixture-venue">Championship Arena</div>
+                </div>
+                <div class="fixture-item">
+                    <div class="fixture-date">
+                        <div>Tue, Sep 28</div>
+                        <div>19:30</div>
+                    </div>
+                    <div class="fixture-match">Shadow Foxes vs Royal Elite</div>
+                    <div class="fixture-venue">National Stadium</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section id="store" class="store-section">
+            <h2><i class="fas fa-shopping-cart"></i> Loja Oficial</h2>
+            <p>Adquira produtos oficiais do Brabo's League 2025</p>
+            <p>Camisas, bonés, cachecóis e muito mais!</p>
+            <a href="#" class="store-btn">
+                <i class="fas fa-external-link-alt"></i>
+                Visitar Loja Online
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Brabo's League. Todos os direitos reservados.</p>
+            <p>Siga-nos nas redes sociais para mais atualizações!</p>
+        </div>
+    </footer>
 </body>
 </html>
