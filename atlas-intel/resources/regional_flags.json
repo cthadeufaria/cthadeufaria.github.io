@@ -1,0 +1,266 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2025-10-30",
+  "description": "Regional flag emoji mappings for subdivisions",
+  "note": "Regional flags (🏴) require Unicode 15.1+ support. Fallback to national flag if not supported.",
+  "countries": {
+    "GB": {
+      "name": "United Kingdom",
+      "flag": "🇬🇧",
+      "regions": {
+        "ENG": {
+          "name": "England",
+          "code": "GB-ENG",
+          "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0067}\\u{E0062}\\u{E0065}\\u{E006E}\\u{E0067}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇬🇧",
+          "type": "regional"
+        },
+        "SCT": {
+          "name": "Scotland",
+          "code": "GB-SCT",
+          "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0067}\\u{E0062}\\u{E0073}\\u{E0063}\\u{E0074}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇬🇧",
+          "type": "regional"
+        },
+        "WLS": {
+          "name": "Wales",
+          "code": "GB-WLS",
+          "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0067}\\u{E0062}\\u{E0077}\\u{E006C}\\u{E0073}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇬🇧",
+          "type": "regional"
+        },
+        "NIR": {
+          "name": "Northern Ireland",
+          "code": "GB-NIR",
+          "flag": "🇬🇧",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        }
+      }
+    },
+    "US": {
+      "name": "United States",
+      "flag": "🇺🇸",
+      "regions": {
+        "CA": {
+          "name": "California",
+          "code": "US-CA",
+          "flag": "🇺🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "TX": {
+          "name": "Texas",
+          "code": "US-TX",
+          "flag": "🏴󠁵󠁳󠁴󠁸󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0075}\\u{E0073}\\u{E0074}\\u{E0078}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇺🇸",
+          "type": "regional"
+        },
+        "NY": {
+          "name": "New York",
+          "code": "US-NY",
+          "flag": "🇺🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "FL": {
+          "name": "Florida",
+          "code": "US-FL",
+          "flag": "🇺🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "IL": {
+          "name": "Illinois",
+          "code": "US-IL",
+          "flag": "🇺🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "PA": {
+          "name": "Pennsylvania",
+          "code": "US-PA",
+          "flag": "🇺🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "OH": {
+          "name": "Ohio",
+          "code": "US-OH",
+          "flag": "🇺🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        }
+      }
+    },
+    "ES": {
+      "name": "Spain",
+      "flag": "🇪🇸",
+      "regions": {
+        "CT": {
+          "name": "Catalonia",
+          "code": "ES-CT",
+          "flag": "🏴󠁥󠁳󠁣󠁴󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0065}\\u{E0073}\\u{E0063}\\u{E0074}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇪🇸",
+          "type": "regional"
+        },
+        "GA": {
+          "name": "Galicia",
+          "code": "ES-GA",
+          "flag": "🏴󠁥󠁳󠁧󠁡󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0065}\\u{E0073}\\u{E0067}\\u{E0061}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇪🇸",
+          "type": "regional"
+        },
+        "PV": {
+          "name": "Basque Country",
+          "code": "ES-PV",
+          "flag": "🇪🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "AN": {
+          "name": "Andalusia",
+          "code": "ES-AN",
+          "flag": "🇪🇸",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        }
+      }
+    },
+    "CA": {
+      "name": "Canada",
+      "flag": "🇨🇦",
+      "regions": {
+        "ON": {
+          "name": "Ontario",
+          "code": "CA-ON",
+          "flag": "🇨🇦",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "QC": {
+          "name": "Quebec",
+          "code": "CA-QC",
+          "flag": "🇨🇦",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "BC": {
+          "name": "British Columbia",
+          "code": "CA-BC",
+          "flag": "🇨🇦",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "AB": {
+          "name": "Alberta",
+          "code": "CA-AB",
+          "flag": "🇨🇦",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        }
+      }
+    },
+    "AU": {
+      "name": "Australia",
+      "flag": "🇦🇺",
+      "regions": {
+        "NSW": {
+          "name": "New South Wales",
+          "code": "AU-NSW",
+          "flag": "🇦🇺",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "VIC": {
+          "name": "Victoria",
+          "code": "AU-VIC",
+          "flag": "🇦🇺",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "QLD": {
+          "name": "Queensland",
+          "code": "AU-QLD",
+          "flag": "🇦🇺",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        },
+        "WA": {
+          "name": "Western Australia",
+          "code": "AU-WA",
+          "flag": "🇦🇺",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        }
+      }
+    },
+    "CN": {
+      "name": "China",
+      "flag": "🇨🇳",
+      "regions": {
+        "HK": {
+          "name": "Hong Kong",
+          "code": "HK",
+          "flag": "🇭🇰",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "national"
+        },
+        "MO": {
+          "name": "Macau",
+          "code": "MO",
+          "flag": "🇲🇴",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "national"
+        }
+      }
+    },
+    "FR": {
+      "name": "France",
+      "flag": "🇫🇷",
+      "regions": {
+        "BRE": {
+          "name": "Brittany",
+          "code": "FR-BRE",
+          "flag": "🏴󠁦󠁲󠁢󠁲󠁥󠀀󠁿",
+          "unicode_sequence": "\\u{1F3F4}\\u{E0066}\\u{E0072}\\u{E0062}\\u{E0072}\\u{E0065}\\u{E0000}\\u{E007F}",
+          "fallback_flag": "🇫🇷",
+          "type": "regional"
+        },
+        "COR": {
+          "name": "Corsica",
+          "code": "FR-COR",
+          "flag": "🇫🇷",
+          "unicode_sequence": null,
+          "fallback_flag": null,
+          "type": "fallback"
+        }
+      }
+    }
+  }
+}

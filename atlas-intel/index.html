@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Intel - Open Source Location Intelligence</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        nav {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        nav .nav-links a:hover {
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .tagline { font-size: 1.5rem; opacity: 0.9; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+            width: 100%;
+        }
+        .stat-label {
+            color: #64748b;
+            margin-top: 0.5rem;
+            display: block;
+            width: 100%;
+        }
+        .stat-breakdown {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .feature {
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+        .feature h3 { margin-bottom: 0.5rem; }
+        .cta {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 1rem 0.5rem;
+            transition: transform 0.2s;
+        }
+        .cta:hover { transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            nav .nav-links { flex-direction: column; gap: 1rem; }
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">🗺️ Atlas Intel</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sources.html">Data Sources</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="globe.html">Globe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>🗺️ Atlas Intel</h1>
+            <p class="tagline">Open Source Location Intelligence</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Real-time Country Data</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="country-count">--</div>
+                    <div class="stat-label">Countries</div>
+                    <div class="stat-breakdown" id="country-breakdown"></div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="source-count">--</div>
+                    <div class="stat-label">Data Sources</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="airport-count">--</div>
+                    <div class="stat-label">Airports</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="coverage-percent">--</div>
+                    <div class="stat-label">Avg Coverage</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>📊 Rich Metadata</h3>
+                    <p>Geography, demographics, economy, and 7,800+ commercial airports from authoritative sources.</p>
+                </div>
+                <div class="feature">
+                    <h3>🤖 Automated Updates</h3>
+                    <p>Monthly automated refresh via GitHub Actions ensures data stays fresh and current.</p>
+                </div>
+                <div class="feature">
+                    <h3>🌐 Multiple Formats</h3>
+                    <p>Available as JSON, CSV, NPM package, or direct download from GitHub Releases.</p>
+                </div>
+                <div class="feature">
+                    <h3>🎨 Embeddable Widgets</h3>
+                    <p>Interactive globe and data explorer components ready to embed on any website.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Quick Start</h2>
+            <h3>Download Data Files</h3>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><a href="resources/countries.v2.json">Canonical Countries v2 (countries.v2.json)</a></li>
+                <li><a href="resources/coverage.v2.json">Coverage v2 (coverage.v2.json)</a></li>
+                <li><a href="resources/countries_50m.geojson">Country Boundaries (GeoJSON, 9.7MB)</a></li>
+            </ul>
+
+            <h3>Explore the Data</h3>
+            <p>View the data in an interactive 3D globe or 2D map with country information and airport markers.</p>
+
+            <div style="margin-top: 2rem;">
+                <a href="sources.html" class="cta">📚 Data Sources</a>
+                <a href="coverage.html" class="cta">🎯 Coverage Matrix</a>
+                <a href="globe.html" class="cta">🌍 3D Globe</a>
+                <a href="https://github.com/atlas-intel/atlas-intel" class="cta">View on GitHub</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Data Sources</h2>
+            <p>Atlas Intel aggregates data from active authoritative country sources:</p>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>CIA World Factbook</strong> - Demographics, geography, economy (216 countries)</li>
+                <li><strong>Natural Earth</strong> - Geographic boundaries, regions, bounding boxes (234 countries)</li>
+                <li><strong>IATA Airports</strong> - Commercial airports with IATA codes (7,793 airports in 236 countries)</li>
+                </ul>
+            <p style="margin-top: 1rem;">
+                <a href="sources.html" style="color: #667eea; font-weight: bold;">→ View detailed source information</a> |
+                <a href="coverage.html" style="color: #667eea; font-weight: bold;">→ Compare coverage by country</a>
+            </p>
+        </div>
+
+        <footer style="text-align: center; padding: 2rem 0; color: white;">
+            <p>Maintained by <a href="https://github.com/atlascodesai" style="color: white;">@atlascodesai</a></p>
+            <p style="margin-top: 0.5rem;">Part of the <a href="https://atlaslogged.com" style="color: white;">Atlas Ecosystem</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Load and display real stats
+        fetch('resources/coverage.v2.json?v=' + Date.now())
+            .then(r => r.json())
+            .then(data => {
+                // Update country count from metadata
+                document.getElementById('country-count').textContent = data.metadata.total_countries;
+
+                // Add breakdown: main countries + territories
+                const breakdown = `${data.metadata.main_countries_count} countries + ${data.metadata.constituent_units_count} territories`;
+                document.getElementById('country-breakdown').textContent = breakdown;
+
+                // Update source count
+                document.getElementById('source-count').textContent = data.metadata.sources_count;
+
+                // Count total airports from all countries
+                let totalAirports = 0;
+                Object.values(data.coverage).forEach(country => {
+                    if (country.airports) {
+                        totalAirports += country.airports;
+                    }
+                });
+                document.getElementById('airport-count').textContent = totalAirports.toLocaleString();
+
+                // Calculate average coverage
+                const coverages = Object.values(data.coverage).map(c => c.coverage_percentage || 0);
+                const avgCoverage = coverages.reduce((a, b) => a + b, 0) / coverages.length;
+                document.getElementById('coverage-percent').textContent = avgCoverage.toFixed(1) + '%';
+            })
+            .catch(() => console.log('Data not yet loaded'));
+    </script>
+</body>
+</html>

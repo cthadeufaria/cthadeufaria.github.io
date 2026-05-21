@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coverage Matrix - Atlas Intel</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        nav {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        nav .nav-links a:hover {
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            color: white;
+        }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .tagline { font-size: 1.5rem; opacity: 0.9; }
+        .controls {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .controls-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .source-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .source-filter-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .source-filter-item:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+        .source-filter-item input[type="checkbox"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        .source-filter-item label {
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .source-filter-name {
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .source-filter-count {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        .source-filter-item.checked {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover {
+            border-color: #667eea;
+        }
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        .table-container {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            max-height: 800px;
+            overflow-y: auto;
+            position: relative;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead {
+            background: #f8fafc;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+            cursor: pointer;
+            user-select: none;
+        }
+        th:hover {
+            background: #f1f5f9;
+        }
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        tr:hover {
+            background: #f8fafc;
+        }
+        .country-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .country-flag {
+            font-size: 1.5rem;
+        }
+        .country-name {
+            font-weight: 500;
+        }
+        .country-code {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .check-mark {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .check-yes { color: #10b981; }
+        .check-no { color: #ef4444; opacity: 0.3; }
+        .airport-count {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .coverage-bar {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 0.25rem;
+        }
+        .coverage-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+        .stats-bar {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        .export-btn {
+            padding: 0.75rem 1.5rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .export-btn:hover {
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1.2rem; }
+            nav .nav-links { flex-direction: column; gap: 1rem; }
+            table { font-size: 0.85rem; }
+            th, td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">🗺️ Atlas Intel</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sources.html">Data Sources</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="globe.html">Globe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>🎯 Coverage Matrix</h1>
+            <p class="tagline">Compare data availability across all sources</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats-bar" id="stats-bar">
+            <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="controls">
+            <div class="controls-row">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="🔍 Search countries..." />
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All Countries</button>
+                    <button class="filter-btn" data-filter="complete">Complete (5/5)</button>
+                    <button class="filter-btn" data-filter="missing">Missing Sources</button>
+                    <button class="filter-btn" data-filter="with-airports">With Airports</button>
+                </div>
+                <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border-radius: 8px; border: 2px solid #e2e8f0; cursor: pointer;">
+                    <input type="checkbox" id="show-territories" style="cursor: pointer;" />
+                    <span style="font-size: 0.9rem;">Include Territories</span>
+                </label>
+                <button class="export-btn" id="export-btn">Export CSV</button>
+            </div>
+
+            <div class="source-filters">
+                <div style="width: 100%; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                    Show entities from:
+                </div>
+
+                <div class="source-filter-item checked" data-source="cia_factbook">
+                    <input type="checkbox" id="filter-cia-factbook" checked />
+                    <label for="filter-cia-factbook">
+                        <div class="source-filter-name">CIA Factbook</div>
+                        <div class="source-filter-count">245 entities</div>
+                    </label>
+                </div>
+
+                <div class="source-filter-item checked" data-source="natural_earth">
+                    <input type="checkbox" id="filter-natural-earth" checked />
+                    <label for="filter-natural-earth">
+                        <div class="source-filter-name">Natural Earth Countries</div>
+                        <div class="source-filter-count">234 entities</div>
+                    </label>
+                </div>
+
+                <div class="source-filter-item checked" data-source="natural_earth_sovereignty">
+                    <input type="checkbox" id="filter-natural-earth-sovereignty" checked />
+                    <label for="filter-natural-earth-sovereignty">
+                        <div class="source-filter-name">Natural Earth Sovereignty</div>
+                        <div class="source-filter-count">183 entities</div>
+                    </label>
+                </div>
+
+                <div class="source-filter-item checked" data-source="natural_earth_map_units">
+                    <input type="checkbox" id="filter-natural-earth-map-units" checked />
+                    <label for="filter-natural-earth-map-units">
+                        <div class="source-filter-name">Natural Earth Map Units</div>
+                        <div class="source-filter-count">265 entities</div>
+                    </label>
+                </div>
+
+                <div class="source-filter-item checked" data-source="airports">
+                    <input type="checkbox" id="filter-airports" checked />
+                    <label for="filter-airports">
+                        <div class="source-filter-name">Airports</div>
+                        <div class="source-filter-count">236 entities</div>
+                    </label>
+                </div>
+
+                <div class="source-filter-item" data-source="emoji_flags">
+                    <input type="checkbox" id="filter-emoji-flags" />
+                    <label for="filter-emoji-flags">
+                        <div class="source-filter-name">All Unicode Emoji Flags</div>
+                        <div class="source-filter-count">253 entities</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="coverage-table">
+                <thead>
+                    <tr>
+                        <th data-sort="iso">ISO <span id="count-iso">(250)</span></th>
+                        <th data-sort="flag">Flag <span id="count-flag">(250)</span></th>
+                        <th data-sort="name">Country <span id="count-name">(250)</span></th>
+                        <th data-sort="codes">Codes <span id="count-codes">(ISO3: 250, FIPS: 151)</span></th>
+                        <th data-sort="cia_factbook">CIA Factbook <span id="count-cia_factbook">(245)</span></th>
+                        <th data-sort="natural_earth">Natural Earth Countries <span id="count-natural_earth">(234)</span></th>
+                        <th data-sort="natural_earth_sovereignty">Natural Earth Sovereignty <span id="count-natural_earth_sovereignty">(183)</span></th>
+                        <th data-sort="natural_earth_map_units">Natural Earth Map Units <span id="count-natural_earth_map_units">(265)</span></th>
+                        <th data-sort="airports">Airports <span id="count-airports">(236)</span></th>
+                        <th data-sort="coverage">Coverage <span id="count-coverage">(222)</span></th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let coverageData = null;
+        let currentFilter = 'all';
+        let currentSort = { column: 'name', ascending: true };
+        let showTerritories = false;
+        let enabledSources = {
+            cia_factbook: true,
+            natural_earth: true,
+            natural_earth_sovereignty: true,
+            natural_earth_map_units: true,
+            airports: true,
+            emoji_flags: false
+        };
+
+        // Load data
+        fetch('resources/coverage.v2.json?v=' + Date.now())
+            .then(response => response.json())
+            .then(data => {
+                coverageData = data;
+                renderStats();
+                renderTable();
+                setupEventListeners();
+            })
+            .catch(error => console.error('Error loading data:', error));
+
+        function renderStats() {
+            const statsBar = document.getElementById('stats-bar');
+
+            // Filter by territory setting AND source filters
+            const WHITE_FLAG = '\u{1F3F3}\uFE0F';
+            const countries = Object.values(coverageData.coverage).filter(c => {
+                // Territory filter
+                if (!showTerritories && c.is_constituent_unit) {
+                    return false;
+                }
+
+                // Source filter - entity must be in at least ONE enabled source
+                const hasValidFlag = c.flag && c.flag !== WHITE_FLAG && c.flag !== '🏳️';
+                const inAnEnabledSource = (
+                    (enabledSources.cia_factbook && c.cia_factbook) ||
+                    (enabledSources.natural_earth && c.natural_earth) ||
+                    (enabledSources.natural_earth_sovereignty && c.natural_earth_sovereignty) ||
+                    (enabledSources.natural_earth_map_units && c.natural_earth_map_units) ||
+                    (enabledSources.airports && c.airports) ||
+                    (enabledSources.emoji_flags && hasValidFlag)
+                );
+
+                return inAnEnabledSource;
+            });
+
+            const total = countries.length;
+            const complete = countries.filter(c =>
+                c.cia_factbook && c.natural_earth && c.natural_earth_sovereignty && c.natural_earth_map_units && c.airports
+            ).length;
+            const withAirports = countries.filter(c => c.airports).length;
+
+            statsBar.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${total}</div>
+                    <div class="stat-label">${showTerritories ? 'Total Entities' : 'Total Countries'}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${complete}</div>
+                    <div class="stat-label">Complete Coverage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${withAirports}</div>
+                    <div class="stat-label">With Airports</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${Math.round(complete / total * 100)}%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            `;
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('table-body');
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+            // Separate main countries and territories
+            const mainCountries = [];
+            const territories = [];
+
+            Object.entries(coverageData.coverage).forEach(([iso, country]) => {
+                if (country.is_constituent_unit) {
+                    territories.push([iso, country]);
+                } else {
+                    mainCountries.push([iso, country]);
+                }
+            });
+
+            // Filter and sort main countries
+            let filtered = mainCountries.filter(([iso, country]) => {
+                // Search filter
+                if (searchTerm && !country.name.toLowerCase().includes(searchTerm) && !iso.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+
+                // Source filter - entity must be in at least ONE enabled source
+                const WHITE_FLAG = '\u{1F3F3}\uFE0F';
+                const hasValidFlag = country.flag && country.flag !== WHITE_FLAG && country.flag !== '🏳️';
+
+                const inAnEnabledSource = (
+                    (enabledSources.cia_factbook && country.cia_factbook) ||
+                    (enabledSources.natural_earth && country.natural_earth) ||
+                    (enabledSources.natural_earth_sovereignty && country.natural_earth_sovereignty) ||
+                    (enabledSources.natural_earth_map_units && country.natural_earth_map_units) ||
+                    (enabledSources.airports && country.airports) ||
+                    (enabledSources.emoji_flags && hasValidFlag)
+                );
+
+                if (!inAnEnabledSource) {
+                    return false;
+                }
+
+                // Coverage filter
+                if (currentFilter === 'complete') {
+                    return country.cia_factbook && country.natural_earth && country.natural_earth_sovereignty && country.natural_earth_map_units && country.airports;
+                } else if (currentFilter === 'missing') {
+                    return !country.cia_factbook || !country.natural_earth || !country.natural_earth_sovereignty || !country.natural_earth_map_units || !country.airports;
+                } else if (currentFilter === 'with-airports') {
+                    return country.airports;
+                }
+
+                return true;
+            });
+
+            // Sort main countries
+            filtered.sort((a, b) => {
+                const [isoA, countryA] = a;
+                const [isoB, countryB] = b;
+                let compareA, compareB;
+
+                if (currentSort.column === 'iso') {
+                    compareA = isoA;
+                    compareB = isoB;
+                } else if (currentSort.column === 'flag') {
+                    compareA = countryA.flag || '';
+                    compareB = countryB.flag || '';
+                } else if (currentSort.column === 'name') {
+                    compareA = countryA.name;
+                    compareB = countryB.name;
+                } else if (currentSort.column === 'coverage') {
+                    // Calculate coverage count for sorting
+                    const sourcesA = [countryA.cia_factbook, countryA.natural_earth, countryA.natural_earth_sovereignty, countryA.natural_earth_map_units, countryA.airports];
+                    const sourcesB = [countryB.cia_factbook, countryB.natural_earth, countryB.natural_earth_sovereignty, countryB.natural_earth_map_units, countryB.airports];
+                    compareA = sourcesA.filter(Boolean).length;
+                    compareB = sourcesB.filter(Boolean).length;
+                } else {
+                    compareA = countryA[currentSort.column] ? 1 : 0;
+                    compareB = countryB[currentSort.column] ? 1 : 0;
+                }
+
+                if (compareA < compareB) return currentSort.ascending ? -1 : 1;
+                if (compareA > compareB) return currentSort.ascending ? 1 : -1;
+                return 0;
+            });
+
+            // Build rows array
+            const rows = [];
+
+            // Render main countries and their territories
+            filtered.forEach(([iso, country]) => {
+                rows.push(renderCountryRow(iso, country, false));
+
+                // Add territories if enabled
+                if (showTerritories) {
+                    // Find territories for this country
+                    const childTerritories = territories.filter(([tIso, territory]) => {
+                        return territory.parent_iso_code === iso;
+                    });
+
+                    // Sort territories by type and name
+                    childTerritories.sort((a, b) => {
+                        const [, tA] = a;
+                        const [, tB] = b;
+
+                        // Sort by type first
+                        const typeOrder = { territory: 1, autonomous: 2, disputed: 3, disputed_border: 4, other: 5 };
+                        const typeA = typeOrder[tA.territory_type] || 99;
+                        const typeB = typeOrder[tB.territory_type] || 99;
+
+                        if (typeA !== typeB) return typeA - typeB;
+                        return tA.name.localeCompare(tB.name);
+                    });
+
+                    childTerritories.forEach(([tIso, territory]) => {
+                        rows.push(renderCountryRow(tIso, territory, true));
+                    });
+                }
+            });
+
+            // Add orphaned territories (those without parent_iso_code or parent not in list)
+            if (showTerritories) {
+                const parentIsoCodes = new Set(filtered.map(([iso]) => iso));
+                const orphanedTerritories = territories.filter(([tIso, territory]) => {
+                    return !territory.parent_iso_code || !parentIsoCodes.has(territory.parent_iso_code);
+                });
+
+                if (orphanedTerritories.length > 0) {
+                    // Sort orphaned territories
+                    orphanedTerritories.sort((a, b) => {
+                        const [, tA] = a;
+                        const [, tB] = b;
+                        return tA.name.localeCompare(tB.name);
+                    });
+
+                    orphanedTerritories.forEach(([tIso, territory]) => {
+                        rows.push(renderCountryRow(tIso, territory, false));
+                    });
+                }
+            }
+
+            tbody.innerHTML = rows.join('');
+        }
+
+        function renderCountryRow(iso, country, isNested) {
+            const sources = [
+                country.cia_factbook,
+                country.natural_earth,
+                country.natural_earth_sovereignty,
+                country.natural_earth_map_units,
+                country.airports
+            ];
+            const coverageCount = sources.filter(Boolean).length;
+            const coveragePercent = (coverageCount / 5) * 100;
+
+            // Build codes display
+            const codes = [];
+            if (country.iso3) codes.push(`ISO3: ${country.iso3}`);
+            if (country.fips) codes.push(`FIPS: ${country.fips}`);
+            const codesDisplay = codes.length > 0 ? codes.join('<br>') : '—';
+
+            // Territory type badge
+            let typeBadge = '';
+            if (country.is_constituent_unit && country.territory_type) {
+                const typeLabels = {
+                    territory: { label: 'Territory', color: '#3b82f6' },
+                    autonomous: { label: 'Autonomous', color: '#8b5cf6' },
+                    disputed: { label: 'Disputed', color: '#ef4444' },
+                    disputed_border: { label: 'Border Dispute', color: '#f59e0b' },
+                    other: { label: 'Other', color: '#64748b' }
+                };
+                const typeInfo = typeLabels[country.territory_type] || typeLabels.other;
+                typeBadge = `<span style="display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; background: ${typeInfo.color}20; color: ${typeInfo.color}; margin-left: 6px;">${typeInfo.label}</span>`;
+            }
+
+            // Determine flag to display
+            let displayFlag = country.flag || '🏳️';
+            // If no flag and is territory with parent, use parent's flag as fallback
+            if ((displayFlag === '🏳️' || !displayFlag) && country.is_constituent_unit && country.parent_iso_code) {
+                const parentCountry = coverageData.coverage[country.parent_iso_code];
+                if (parentCountry && parentCountry.flag) {
+                    displayFlag = parentCountry.flag;
+                }
+            }
+
+            // Generate Wikipedia link
+            const wikiName = country.name.replace(/ /g, '_');
+            const wikiLink = `https://en.wikipedia.org/wiki/${wikiName}`;
+
+            // Nested row styling
+            const nestedStyle = isNested ? 'background: #f8fafc; border-left: 3px solid #cbd5e1;' : '';
+            const nameIndent = isNested ? 'padding-left: 2rem;' : '';
+
+            // Determine if this is a valid ISO-2 code
+            const isValidISO = iso.length === 2;
+            const displayCode = isValidISO ? iso : '—';
+            const codeType = iso.length === 3 ? `<div style="font-size: 0.7rem; color: #94a3b8; margin-top: 2px;">GU_A3: ${iso}</div>` : '';
+
+            return `
+                <tr style="${nestedStyle}">
+                    <td class="country-code" style="font-size: ${isNested ? '0.85rem' : '1rem'}; color: ${isNested ? '#64748b' : 'inherit'};">
+                        ${displayCode}
+                        ${codeType}
+                    </td>
+                    <td class="country-flag" style="text-align: center; font-size: ${isNested ? '1.2rem' : '1.5rem'};">${displayFlag}</td>
+                    <td>
+                        <div class="country-name" style="${nameIndent}">
+                            <a href="${wikiLink}" target="_blank" rel="noopener noreferrer" style="color: #1e293b; text-decoration: none; border-bottom: 1px dashed #94a3b8; font-size: ${isNested ? '0.9rem' : '1rem'};">
+                                ${isNested ? '↳ ' : ''}${country.name}
+                            </a>
+                            ${typeBadge}
+                        </div>
+                    </td>
+                    <td style="font-size: 0.85rem; color: #64748b;">
+                        ${codesDisplay}
+                    </td>
+                    <td class="check-mark ${country.cia_factbook ? 'check-yes' : 'check-no'}">
+                        ${country.cia_factbook ? '✅' : '❌'}
+                    </td>
+                    <td class="check-mark ${country.natural_earth ? 'check-yes' : 'check-no'}">
+                        ${country.natural_earth ? '✅' : '❌'}
+                    </td>
+                    <td class="check-mark ${country.natural_earth_sovereignty ? 'check-yes' : 'check-no'}">
+                        ${country.natural_earth_sovereignty ? '✅' : '❌'}
+                    </td>
+                    <td class="check-mark ${country.natural_earth_map_units ? 'check-yes' : 'check-no'}">
+                        ${country.natural_earth_map_units ? '✅' : '❌'}
+                    </td>
+                    <td class="check-mark ${country.airports ? 'check-yes' : 'check-no'}">
+                        ${country.airports ? '✅' : '❌'}
+                        ${country.airport_count > 0 ? `<div class="airport-count">${country.airport_count} airports</div>` : ''}
+                    </td>
+                    <td>
+                        <div>${coverageCount}/5</div>
+                        <div class="coverage-bar">
+                            <div class="coverage-fill" style="width: ${coveragePercent}%"></div>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function setupEventListeners() {
+            // Search
+            document.getElementById('search-input').addEventListener('input', renderTable);
+
+            // Territory toggle
+            document.getElementById('show-territories').addEventListener('change', (e) => {
+                showTerritories = e.target.checked;
+                renderStats();
+                renderTable();
+            });
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderTable();
+                });
+            });
+
+            // Source filter checkboxes
+            document.querySelectorAll('.source-filter-item').forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const source = item.dataset.source;
+
+                // Toggle checked class on item when checkbox changes
+                checkbox.addEventListener('change', () => {
+                    enabledSources[source] = checkbox.checked;
+                    if (checkbox.checked) {
+                        item.classList.add('checked');
+                    } else {
+                        item.classList.remove('checked');
+                    }
+                    renderStats();  // Update stats bar counts
+                    renderTable();
+                });
+
+                // Allow clicking the whole item to toggle
+                item.addEventListener('click', (e) => {
+                    if (e.target !== checkbox) {
+                        checkbox.checked = !checkbox.checked;
+                        checkbox.dispatchEvent(new Event('change'));
+                    }
+                });
+            });
+
+            // Sort headers
+            document.querySelectorAll('th[data-sort]').forEach(th => {
+                th.addEventListener('click', () => {
+                    const column = th.dataset.sort;
+                    if (currentSort.column === column) {
+                        currentSort.ascending = !currentSort.ascending;
+                    } else {
+                        currentSort = { column, ascending: true };
+                    }
+                    renderTable();
+                });
+            });
+
+            // Export CSV
+            document.getElementById('export-btn').addEventListener('click', () => {
+                const rows = [
+                    ['ISO Code', 'Flag', 'Country', 'ISO3', 'FIPS', 'CIA Factbook', 'Natural Earth', 'Natural Earth Sovereignty', 'Natural Earth Map Units', 'Airports', 'Airport Count', 'Coverage']
+                ];
+
+                Object.entries(coverageData.coverage).forEach(([iso, country]) => {
+                    const sources = [
+                        country.cia_factbook,
+                        country.natural_earth,
+                        country.natural_earth_sovereignty,
+                        country.natural_earth_map_units,
+                        country.airports
+                    ];
+                    const coverageCount = sources.filter(Boolean).length;
+
+                    rows.push([
+                        iso,
+                        country.flag || '',
+                        country.name,
+                        country.iso3 || '',
+                        country.fips || '',
+                        country.cia_factbook ? 'Yes' : 'No',
+                        country.natural_earth ? 'Yes' : 'No',
+                        country.natural_earth_sovereignty ? 'Yes' : 'No',
+                        country.natural_earth_map_units ? 'Yes' : 'No',
+                        country.airports ? 'Yes' : 'No',
+                        country.airport_count || 0,
+                        `${coverageCount}/5`
+                    ]);
+                });
+
+                const csv = rows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'atlas-intel-coverage.csv';
+                a.click();
+            });
+        }
+    </script>
+</body>
+</html>

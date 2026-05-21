@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Intelligence Globe Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            overflow: hidden;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #globe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .panel {
+            position: absolute;
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-panel {
+            top: 20px;
+            left: 20px;
+            max-width: 400px;
+        }
+
+        .header-panel h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-panel p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-card {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .info-panel {
+            top: 20px;
+            right: 20px;
+            max-width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .info-panel.visible {
+            display: block;
+        }
+
+        .country-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .country-flag {
+            font-size: 48px;
+        }
+
+        .country-name {
+            flex: 1;
+        }
+
+        .country-name h2 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .country-code {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .data-label {
+            opacity: 0.6;
+            font-size: 13px;
+        }
+
+        .data-value {
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .region-chip {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .airports-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .airport-chip {
+            background: rgba(118, 75, 162, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-family: monospace;
+        }
+
+        .controls-panel {
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .control-btn.active {
+            background: rgba(102, 126, 234, 0.6);
+        }
+
+        .legend {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.5);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <canvas id="globe"></canvas>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <div>Loading geographic data...</div>
+        </div>
+
+        <div class="panel header-panel">
+            <h1>🌍 Location Intelligence Globe</h1>
+            <p>Interactive 3D visualization of all geographic data</p>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="countryCount">0</div>
+                    <div class="stat-label">COUNTRIES</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="airportCount">0</div>
+                    <div class="stat-label">AIRPORTS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="regionCount">0</div>
+                    <div class="stat-label">REGIONS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="populationCount">0</div>
+                    <div class="stat-label">TOTAL POPULATION</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel info-panel" id="infoPanel">
+            <!-- Country info will be inserted here -->
+        </div>
+
+        <div class="panel controls-panel">
+            <button class="control-btn active" id="toggleBoundaries" onclick="toggleBoundaries()">
+                🗺️ Boundaries
+            </button>
+            <button class="control-btn active" id="toggleAirports" onclick="toggleAirports()">
+                ✈️ Airports
+            </button>
+            <button class="control-btn" id="toggleRotation" onclick="toggleRotation()">
+                🔄 Auto-Rotate
+            </button>
+        </div>
+
+        <div class="panel legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(0, 255, 255, 0.95); height: 3px; margin: 8px 0;"></div>
+                <span>Sovereign Country</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(0, 255, 0, 0.6); height: 2px; margin: 8px 0;"></div>
+                <span>Region/Territory</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(255, 170, 0, 1.0); width: 8px; height: 8px; border-radius: 50%;"></div>
+                <span>Airport (IATA)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(255, 0, 255, 1.0); width: 9px; height: 9px; border-radius: 50%;"></div>
+                <span>Capital City</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="globe.js"></script>
+</body>
+</html>

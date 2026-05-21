@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sources - Atlas Intel</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        nav {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        nav .nav-links a:hover {
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            color: white;
+        }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .tagline { font-size: 1.5rem; opacity: 0.9; }
+        .source-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .source-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 1rem;
+        }
+        .source-title {
+            flex: 1;
+        }
+        .source-title h2 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        .source-meta {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .source-badge {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .source-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .detail-value {
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+        .source-description {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 1.5rem 0;
+        }
+        .data-includes {
+            margin: 1.5rem 0;
+        }
+        .data-includes h3 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        .data-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .data-tag {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .source-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+        .stats-summary {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1.2rem; }
+            nav .nav-links { flex-direction: column; gap: 1rem; }
+            .source-header { flex-direction: column; }
+            .source-badge { margin-top: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">🗺️ Atlas Intel</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sources.html">Data Sources</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="globe.html">Globe</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>📚 Data Sources</h1>
+            <p class="tagline">Authoritative open data from trusted sources</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="stats-summary">
+            <h2>Coverage Summary</h2>
+            <div class="stats-grid" id="stats-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <div id="sources-container">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Load coverage data
+        fetch('resources/coverage.v2.json?v=' + Date.now())
+            .then(response => response.json())
+            .then(data => {
+                // Populate stats
+                const statsGrid = document.getElementById('stats-grid');
+
+                // Count coverage for each source
+                const sourceCounts = {
+                    'CIA World Factbook': 0,
+                    'Natural Earth Countries': 0,
+                    'Natural Earth Sovereignty': 0,
+                    'Natural Earth Map Units': 0,
+                    'IATA Airports': 0
+                };
+
+                Object.values(data.coverage).forEach(country => {
+                    if (country.cia_factbook) sourceCounts['CIA World Factbook']++;
+                    if (country.natural_earth) sourceCounts['Natural Earth Countries']++;
+                    if (country.natural_earth_sovereignty) sourceCounts['Natural Earth Sovereignty']++;
+                    if (country.natural_earth_map_units) sourceCounts['Natural Earth Map Units']++;
+                    if (country.airports) sourceCounts['IATA Airports']++;
+                });
+
+                statsGrid.innerHTML = `
+                    <div class="stat-box">
+                        <div class="stat-number">${data.metadata.total_countries}</div>
+                        <div class="stat-label">Total Countries</div>
+                    </div>
+                    ${data.metadata.data_sources.map((sourceName, index) => `
+                        <div class="stat-box">
+                            <div class="stat-number">${sourceCounts[sourceName] || 0}</div>
+                            <div class="stat-label">${sourceName}</div>
+                        </div>
+                    `).join('')}
+                `;
+
+                // Populate source cards
+                const sourcesContainer = document.getElementById('sources-container');
+
+                const sourceDetailsMap = [
+                    {
+                        key: 'cia_factbook',
+                        name: 'CIA World Factbook',
+                        count: sourceCounts['CIA World Factbook'],
+                        license: 'Public Domain',
+                        update: 'Annual',
+                        format: 'JSON',
+                        url: 'https://github.com/factbook/factbook.json',
+                        description: 'Comprehensive country intelligence from the CIA World Factbook. Provides detailed information about geography, people, government, economy, energy, communications, and military for countries worldwide.',
+                        includes: ['Demographics', 'Geography', 'Government', 'Economy', 'Energy', 'Communications', 'Military', 'Transportation']
+                    },
+                    {
+                        key: 'natural_earth',
+                        name: 'Natural Earth Countries',
+                        count: sourceCounts['Natural Earth Countries'],
+                        license: 'Public Domain',
+                        update: 'Periodic',
+                        format: 'GeoJSON',
+                        url: 'https://www.naturalearthdata.com/',
+                        description: 'High-quality geographic boundary data from Natural Earth. Provides accurate country polygons, bounding boxes, and regional information for cartography and data visualization.',
+                        includes: ['Country Boundaries', 'Geographic Regions', 'Bounding Boxes', 'Area (sq km)', 'Coastlines', 'Administrative Divisions']
+                    },
+                    {
+                        key: 'natural_earth_sovereignty',
+                        name: 'Natural Earth Sovereignty',
+                        count: sourceCounts['Natural Earth Sovereignty'],
+                        license: 'Public Domain',
+                        update: 'Periodic',
+                        format: 'GeoJSON',
+                        url: 'https://www.naturalearthdata.com/',
+                        description: 'Consolidated sovereign-state view from Natural Earth, useful for auditing political sovereignty relationships alongside country boundaries.',
+                        includes: ['Sovereign States', 'Regional Metadata', 'Bounding Boxes', 'Population Estimates']
+                    },
+                    {
+                        key: 'natural_earth_map_units',
+                        name: 'Natural Earth Map Units',
+                        count: sourceCounts['Natural Earth Map Units'],
+                        license: 'Public Domain',
+                        update: 'Periodic',
+                        format: 'GeoJSON',
+                        url: 'https://www.naturalearthdata.com/',
+                        description: 'Natural Earth map-unit metadata normalized to ISO alpha-2 keys for countries and supported territories.',
+                        includes: ['Map Units', 'Official Names', 'Regions', 'Bounding Boxes', 'Flags']
+                    },
+                    {
+                        key: 'airports',
+                        name: 'IATA Airports',
+                        count: sourceCounts['IATA Airports'],
+                        license: 'MIT',
+                        update: 'Monthly',
+                        format: 'JSON',
+                        url: 'https://github.com/mwgg/Airports',
+                        description: 'Comprehensive database of 7,793 commercial airports worldwide with IATA codes. Includes airport names, locations, elevations, and timezone information for 236 countries.',
+                        includes: ['Airport Names', 'IATA Codes', 'ICAO Codes', 'Coordinates', 'Elevation', 'Timezones', 'Cities']
+                    }
+                ];
+
+                sourceDetailsMap.forEach(source => {
+                    const card = document.createElement('div');
+                    card.className = 'source-card';
+                    card.innerHTML = `
+                        <div class="source-header">
+                            <div class="source-title">
+                                <h2>${source.name}</h2>
+                                <div class="source-meta">${source.license} • ${source.update} updates</div>
+                            </div>
+                            <div class="source-badge">${source.count} Countries</div>
+                        </div>
+
+                        <div class="source-description">
+                            <p>${source.description}</p>
+                        </div>
+
+                        <div class="source-details">
+                            <div class="detail-item">
+                                <div class="detail-label">License</div>
+                                <div class="detail-value">${source.license}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Update Frequency</div>
+                                <div class="detail-value">${source.update}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Format</div>
+                                <div class="detail-value">${source.format}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Coverage</div>
+                                <div class="detail-value">${source.count} countries</div>
+                            </div>
+                        </div>
+
+                        <div class="data-includes">
+                            <h3>Data Includes</h3>
+                            <div class="data-tags">
+                                ${source.includes.map(item => `<span class="data-tag">${item}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="source-links">
+                            <a href="${source.url}" class="btn btn-primary" target="_blank">View Source</a>
+                            <a href="coverage.html" class="btn btn-secondary">View Coverage</a>
+                        </div>
+                    `;
+                    sourcesContainer.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error loading data:', error));
+    </script>
+</body>
+</html>
